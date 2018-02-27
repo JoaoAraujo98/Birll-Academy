@@ -10,8 +10,6 @@ public class HomeController {
 	@RequestMapping("/")
 	public String index(){
 		System.out.println("Bem vindo a academia!");
-		
-		
 		return "home";
 	}
 }
