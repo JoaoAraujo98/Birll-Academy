@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import academia.config.Cliente;
+import academia.config.Mensalidade;
 import academia.daos.ClienteDAO;
+import academia.daos.MensalidadeDAO;
 
 @Controller
 public class AcademiaController {
@@ -75,6 +77,28 @@ public class AcademiaController {
 		
 	}
 	
+	@RequestMapping(value="clientes/selecionarnome")
+	public String selecionarnome(){
+		
+		return "clientes/selecionarnome";
+		
+	}
+	
+	@RequestMapping(value="clientes/buscarnome")
+	public ModelAndView buscarnome(String nome){
+		ClienteDAO dao = new ClienteDAO();
+		 
+		List<Cliente> c = dao.getByNome(nome);
+		
+		
+		
+		ModelAndView modelAndView = new ModelAndView("clientes/listar");
+		modelAndView.addObject("clientes", c);
+		
+		return modelAndView;
+		
+	}
+	
 	@RequestMapping(value="clientes/alterar")
 	public ModelAndView alterar (Cliente c){
 		System.out.println("alterando cliente");
@@ -84,6 +108,47 @@ public class AcademiaController {
 		return listar();
 		
 	
+	}
+	
+	@RequestMapping(value="clientes/vermensalidades")
+	public ModelAndView vermensalidades (Cliente c){
+		
+		ClienteDAO dao = new ClienteDAO();
+		c = dao.getById(c.id);
+		
+		
+		ModelAndView modelAndView = new ModelAndView("clientes/mensalidades");
+		modelAndView.addObject("clientes", c);
+		
+		return modelAndView;
+	
+	}
+	
+	@RequestMapping(value="clientes/pagarmensalidade")
+	public ModelAndView pagarmensalidade(Cliente c ){
+		ClienteDAO dao = new ClienteDAO();
+		c = dao.getById(c.id);
+		
+		
+		ModelAndView modelAndView = new ModelAndView("clientes/pagar");
+		modelAndView.addObject("clientes", c);
+		
+		return modelAndView;
+		
+	}
+	
+	@RequestMapping(value="mensalidades", method=RequestMethod.POST)
+	public ModelAndView pagar(Mensalidade m) {
+		System.out.println("acessando o método de gravar uma mensalidade");
+
+		System.out.println("Valor:" +m.getValor()+"Codigo:" + m.getCodigo()+"Idcliente:" + m.getIdcliente()+"DataFim:" + m.getDatafim()+"Data inicio:" + m.getDatainicio()+"Data pagamento:" + m.getDatapagamento());
+		
+
+		MensalidadeDAO dao = new MensalidadeDAO();
+		dao.inserir(m);
+
+		return listar();
+
 	}
 		
 	

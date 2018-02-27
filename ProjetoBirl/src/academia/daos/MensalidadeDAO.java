@@ -8,31 +8,33 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.annotation.Generated;
+
 import academia.config.*;
 
-public class ClienteDAO {
+public class MensalidadeDAO {
 
 	private Connection connection;
 
-	public ClienteDAO() {
+	public MensalidadeDAO() {
 		connection = ConnectionFactory.getConnection();
 	}
 
-	public boolean inserir(Cliente cliente) {
+	public boolean inserir(Mensalidade mensalidade) {
 
-		String sql = "insert into clientes (nome, cpf, fone, endereco, email, dataNascimento) " + "values (?, ?, ?, ?, ?, ?);";
+		String sql = "insert into mensalidades (idcliente, valor, datapagamento, datainicio, datafim) " + "values (?, ?, ?, ?, ?);";
 
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 
-			stmt.setString(1, cliente.getNome());
-			stmt.setString(2, cliente.getCpf());
-			stmt.setString(3, cliente.getFone());
-			stmt.setString(4, cliente.getEndereco());
-			stmt.setString(5, cliente.getEmail());
+			stmt.setLong(1, mensalidade.getIdcliente());
+			stmt.setDouble(2, mensalidade.getValor());
+			stmt.setDate(3, new java.sql.Date(mensalidade.getDatapagamento().getTimeInMillis()));
+			stmt.setDate(4, new java.sql.Date(mensalidade.getDatainicio().getTimeInMillis()));
+			stmt.setDate(5, new java.sql.Date(mensalidade.getDatafim().getTimeInMillis()));
 			
 
-			stmt.setDate(6, new java.sql.Date(cliente.getDataNascimento().getTimeInMillis()));
+			
 
 			stmt.execute();
 			stmt.close();

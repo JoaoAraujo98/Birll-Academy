@@ -54,6 +54,8 @@
 						pattern="dd/MM/yyyy" /></td>
 					<td><a href="/ProjetoBirl/clientes/remover?&id=${cliente.id}">Remover</a></td>
 					<td><a href="/ProjetoBirl/clientes/selecionar?&id=${cliente.id}">Alterar</a></td>
+					<td><a href="/ProjetoBirl/clientes/pagarmensalidade?&id=${cliente.id}">Pagar Mensalidade</a></td>
+					<td><a href="/ProjetoBirl/clientes/vermensalidades?&id=${cliente.id}">Ver Mensalidades</a></td>
 				</tr>
 			</c:forEach>
 		
