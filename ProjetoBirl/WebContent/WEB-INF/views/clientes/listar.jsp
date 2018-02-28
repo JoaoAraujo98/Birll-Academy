@@ -10,31 +10,32 @@
 
 <!DOCTYPE html>
 <html>
+
+<style>
+	body {
+		text-align: center;
+	}
 	
-	<style> 
-		body{
-			text-align: center;
-		}
-		
-		table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+	
+	td, th {
+		border: 1px solid #dddddd;
+		text-align: left;
+		padding: 8px;
+	}
+	
+	tr:nth-child(even) {
+		background-color: #dddddd;
+	}
+	
+	
+</style>
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-		
-	</style>
-
-	<head>
+<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Lista de clientes</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,10 +71,10 @@ tr:nth-child(even) {
 				<th>Email</th>
 				<th>Endereço</th>
 				<th>Data de Nascimento</th>
-				<th>Ação 01</th>
-				<th>Ação 02</th>
-				<th>Ação 03</th>
-				<th>Ação 04</th>
+				<th>1ª Opção</th>
+				<th>2ª Opção</th>
+				<th>3ª Opção</th>
+				<th>4ª Opção</th>
 			</tr>
 	
 			<c:forEach var="cliente" items="${clientes}">
@@ -87,10 +88,10 @@ tr:nth-child(even) {
 					<td>${cliente.endereco}</td>
 					<td><fmt:formatDate value="${cliente.dataNascimento.time}"
 						pattern="dd/MM/yyyy" /></td>
-					<td><a href="/ProjetoBirl/clientes/remover?&id=${cliente.id}">Remover</a></td>
-					<td><a href="/ProjetoBirl/clientes/selecionar?&id=${cliente.id}">Alterar</a></td>
-					<td><a href="/ProjetoBirl/clientes/pagarmensalidade?&id=${cliente.id}">Pagar Mensalidade</a></td>
-					<td><a href="/ProjetoBirl/clientes/vermensalidades?&id=${cliente.id}">Ver Mensalidades</a></td>
+					<td><a href="/ProjetoBirl/clientes/remover?id=${cliente.id}">Remover</a></td>
+					<td><a href="/ProjetoBirl/clientes/selecionar?id=${cliente.id}">Alterar</a></td>
+					<td><a href="/ProjetoBirl/clientes/pagarmensalidade?id=${cliente.id}">Pagar Mensalidade</a></td>
+					<td><a href="/ProjetoBirl/clientes/vermensalidades?id=${cliente.id}">Ver Mensalidades</a></td>
 				</tr>
 			</c:forEach>
 		

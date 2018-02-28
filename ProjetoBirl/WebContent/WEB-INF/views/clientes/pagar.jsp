@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<style>
+</style>
 <head>
     <title>--Formulário Mensalidade--</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,7 +28,7 @@
     </div>
   </div>
 </div>
-   <center> <form action="/ProjetoBirl/mensalidades" method="post">
+   <center> <!-- <form action="/ProjetoBirl/teste" method="post">
 
         <h1>Pagar Mensalidade</h1>
 		
@@ -65,7 +66,12 @@
             <input type="submit" onclick="Enviar();" value="Pagar" />
         </p>
 
-    </form></center>
+    </form></center> -->
+    
+    <form action="/ProjetoBirl/teste" method="post">
+    	<input type=text name=valor><br>
+    	<button type=submit>Enviar</button>
+    </form>
 </body>
 
 </html>

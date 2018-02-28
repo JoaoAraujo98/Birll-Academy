@@ -8,10 +8,14 @@
 </head>
 <body>
 
+<form action="/ProjetoBirl/teste" method="post">
+
+	<input type=text name="nome">
+	<br>
+	<button type=submit>Enviar</button>
 	
-	<center><img src="https://i.imgur.com/ZzJHBwT.jpg"></center>
 	
-	
-	<hr />
+</form>
+
 </body>
 </html>
