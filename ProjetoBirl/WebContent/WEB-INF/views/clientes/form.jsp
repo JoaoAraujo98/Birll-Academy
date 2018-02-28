@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="w3-container">
-  <h2>Projeto Birl</h2>
+  <center><h1>Birl Academy</h1></center>
 
   <div class="w3-bar w3-light-grey">
     <a href="/ProjetoBirl/" class="w3-bar-item w3-button">Inicio</a>
@@ -22,6 +22,7 @@
       <div class="w3-dropdown-content w3-bar-block w3-card-4">
         <a href="/ProjetoBirl/clientes/form" class="w3-bar-item w3-button">Adicionar Cliente</a>
         <a href="/ProjetoBirl/clientes" class="w3-bar-item w3-button">Listar Cliente</a>
+        <a href="/ProjetoBirl/clientes/selecionarnome" class="w3-bar-item w3-button">Buscar Cliente por Nome</a>
         
       </div>
     </div>
@@ -29,7 +30,7 @@
 </div>
    <center> <form action="/ProjetoBirl/clientes" method="post">
 
-        <h1>Cadastre-se</h1>
+        <h2>Cadastre-se</h2>
 
         <p class="nome">
             <label for="nome">Nome:</label>

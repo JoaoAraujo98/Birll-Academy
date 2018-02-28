@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="w3-container">
-  <h2>Projeto Birl</h2>
+  <center><h2>Birl Academy</h2></center>
 
   <div class="w3-bar w3-light-grey">
     <a href="/ProjetoBirl/" class="w3-bar-item w3-button">Inicio</a>

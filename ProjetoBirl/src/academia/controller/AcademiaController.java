@@ -138,7 +138,7 @@ public class AcademiaController {
 	}
 	
 	@RequestMapping(value="mensalidades", method=RequestMethod.POST)
-	public ModelAndView pagar(Mensalidade m) {
+	public String pagar(Mensalidade m) {
 		System.out.println("acessando o método de gravar uma mensalidade");
 
 		System.out.println("Valor:" +m.getValor()+"Codigo:" + m.getCodigo()+"Idcliente:" + m.getIdcliente()+"DataFim:" + m.getDatafim()+"Data inicio:" + m.getDatainicio()+"Data pagamento:" + m.getDatapagamento());
@@ -147,7 +147,7 @@ public class AcademiaController {
 		MensalidadeDAO dao = new MensalidadeDAO();
 		dao.inserir(m);
 
-		return listar();
+		return "redirect:clientes";
 
 	}
 		

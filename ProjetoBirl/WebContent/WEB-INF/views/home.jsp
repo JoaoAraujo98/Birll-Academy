@@ -22,7 +22,7 @@ body{
 
 	  <c:import url="cabecalho.jsp" />
 	<div class="w3-container">
-  <center><h2>Bem vindo</h2></center>
+  
 
   <div class="w3-bar w3-light-grey">
     <a href="/ProjetoBirl/" class="w3-bar-item w3-button">Inicio</a>
@@ -37,6 +37,8 @@ body{
     </div>
   </div>
 </div>
+
+<center><h2>Bem vindo</h2></center>
 
 
 

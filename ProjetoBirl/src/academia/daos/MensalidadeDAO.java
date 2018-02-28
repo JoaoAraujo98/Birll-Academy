@@ -56,7 +56,7 @@ public class MensalidadeDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				// criando o objeto Contato
+				// criando o objeto 
 				Cliente c = new Cliente();
 				c.setId(rs.getLong("id"));
 				c.setNome(rs.getString("nome"));
@@ -126,7 +126,7 @@ public class MensalidadeDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				// criando o objeto Contato
+				// criando o objeto
 				result = new Cliente();
 				result.setId(rs.getLong("id"));
 				result.setNome(rs.getString("nome"));
@@ -164,7 +164,7 @@ public class MensalidadeDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				// criando o objeto Contato
+				// criando o objeto 
 				Cliente cliente = new Cliente();
 				cliente.setId(rs.getLong("id"));
 				cliente.setNome(rs.getString("nome"));

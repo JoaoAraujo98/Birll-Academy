@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="w3-container">
-  <h2>Projeto Birl</h2>
+  <center><h1>Birl Academy</h1></center>
 
   <div class="w3-bar w3-light-grey">
     <a href="/ProjetoBirl/" class="w3-bar-item w3-button">Inicio</a>
@@ -29,7 +29,7 @@
 </div>
    <center> <form action="/ProjetoBirl/clientes/buscarnome" method="post">
 
-        <h1>Digite o nome do cliente</h1>
+        <h2>Digite o nome do cliente</h2>
 
         <p class="nome">
             <label for="nome">Nome:</label>

@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Cliente {
 
 	public Long id;
-	public String nome;
+	private String nome;
 	private String cpf;
 	private String fone;
 	private String email;
