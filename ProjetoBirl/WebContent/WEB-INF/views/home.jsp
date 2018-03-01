@@ -27,6 +27,7 @@
         <a href="/ProjetoBirl/clientes/form" class="w3-bar-item w3-button">Adicionar Cliente</a>
         <a href="/ProjetoBirl/clientes" class="w3-bar-item w3-button">Listar Cliente</a>
         <a href="/ProjetoBirl/clientes/selecionarnome" class="w3-bar-item w3-button">Buscar Cliente por Nome</a>
+         <a href="/ProjetoBirl/clientes/formfluxo" class="w3-bar-item w3-button">Fluxo Mensal</a>
         
       </div>
     </div>

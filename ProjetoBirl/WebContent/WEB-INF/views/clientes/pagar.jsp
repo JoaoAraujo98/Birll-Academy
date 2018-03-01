@@ -2,6 +2,10 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <style>
+	body{
+	
+	
+	}
 </style>
 <head>
     <title>--Formulário Mensalidade--</title>
@@ -14,7 +18,7 @@
 </head>
 <body>
 <div class="w3-container">
-  <center><h2>Birl Academy</h2></center>
+  <center><h1>Birl Academy</h1></center>
 
   <div class="w3-bar w3-light-grey">
     <a href="/ProjetoBirl/" class="w3-bar-item w3-button">Inicio</a>
@@ -23,55 +27,49 @@
       <div class="w3-dropdown-content w3-bar-block w3-card-4">
         <a href="/ProjetoBirl/clientes/form" class="w3-bar-item w3-button">Adicionar Cliente</a>
         <a href="/ProjetoBirl/clientes" class="w3-bar-item w3-button">Listar Cliente</a>
+        <a href="/ProjetoBirl/clientes/selecionarnome" class="w3-bar-item w3-button">Buscar Cliente por Nome</a>
         
       </div>
     </div>
   </div>
 </div>
-   <center> <!-- <form action="/ProjetoBirl/teste" method="post">
+   <center> <form action="/ProjetoBirl/pagarm" method="post">
 
-        <h1>Pagar Mensalidade</h1>
-		
-		<p>
-        	
-            <input type="text"   name="id" value="${cliente.id}"/>
+        <h2>Pagar Mensalidade</h2>
+
+        <p class="idcliente">
+            <label for="nome">Id do cliente</label>
+            <input type="text" id="idcliente"  required="required" name="idcliente" value="${cliente.id}" />
             
         </p>
-        
-        <p class="valor">
-            <label for="valor">Valor:</label>
-            <input type="text" id="valorid"  required="required" name="valor" value="50" />
-            
-        </p>
-       
-            <p>
-        	<label for="datapagamento">Data de pagamento:</label>
-            <input type="text" id="datapagamentoid"  name="datapagamento"  /> 
-            
-        </p> 
-        
         <p>
-        	<label for="datainicio">Inicio da mensalidade (data):</label>
-            <input type="text" id="datainicioid"  name="datainicio"  /> 
+        	<label for="valor">Valor</label>
+            <input type="text" id="valor"  name="valor" value="50"/>
             
         </p>
-        
-        <p>
-        	<label for="datafim">Fim da mensalidade (data):</label>
-            <input type="text" id="datafimid"  name="datafim"  /> 
+        <p class="datapagamento">
+       	 	<label for="datapagamento">Data de pagamento:</label>
+            <input type="text" id="datapagamento"  name="datapagamento" />
             
+
         </p>
         
+         <p>
+        	<label for="datainicio">Inicio da mensalidade</label>
+            <input type="text" id="datainicio"  name="datainicio" />
+            
+        </p>
+         <p>
+        	<label for="datafim">Fim da mensalidade:</label>
+            <input type="text" id="datafim"  name="datafim" />
+            
+        </p>
+            
         <p class="submit">
-            <input type="submit" onclick="Enviar();" value="Pagar" />
+            <input type="submit" onclick="Enviar();" value="Enviar" />
         </p>
 
-    </form></center> -->
-    
-    <form action="/ProjetoBirl/teste" method="post">
-    	<input type=text name=valor><br>
-    	<button type=submit>Enviar</button>
-    </form>
+    </form></center>
 </body>
 
 </html>

@@ -48,99 +48,37 @@ public class MensalidadeDAO {
 		return true;
 	}
 
-	public List<Cliente> getLista() {
-		List<Cliente> result = new ArrayList<>();
+	public List<Mensalidade> getLista(long idcliente) {
+		List<Mensalidade> result = new ArrayList<>();
 
 		try {
-			PreparedStatement stmt = this.connection.prepareStatement("select * from clientes");
+			PreparedStatement stmt = this.connection.prepareStatement("select * from mensalidades where idcliente = "+ idcliente+";");
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
 				// criando o objeto 
-				Cliente c = new Cliente();
-				c.setId(rs.getLong("id"));
-				c.setNome(rs.getString("nome"));
-				c.setCpf(rs.getString("cpf"));
-				c.setFone(rs.getString("fone"));
-				c.setEmail(rs.getString("email"));
-				c.setEndereco(rs.getString("endereco"));
-
-				// montando a data através do Calendar
-				Calendar data = Calendar.getInstance();
-				data.setTime(rs.getDate("dataNascimento"));
-				c.setDataNascimento(data);
-
-				// adicionando o objeto à lista
-				result.add(c);
-			}
-			rs.close();
-			stmt.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return result;
-	}
-
-	public boolean alterar(Cliente cliente) {
-		String sql = "update clientes set nome=?, cpf=?, fone=?, email=?, endereco=?, dataNascimento=? where id=?";
-		try {
-			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, cliente.getNome());
-			stmt.setString(2, cliente.getCpf());
-			stmt.setString(3, cliente.getFone());
-			stmt.setString(4, cliente.getEmail());
-			stmt.setString(5, cliente.getEndereco());
-			stmt.setDate(6, new java.sql.Date(cliente.getDataNascimento().getTimeInMillis()));
-			stmt.setLong(7, cliente.getId());
-			stmt.execute();
-			stmt.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-		return true;
-	}
-
-	public boolean remover(Cliente cliente) {
-		try {
-			PreparedStatement stmt = connection.prepareStatement("delete from clientes where id=?");
-			stmt.setLong(1, cliente.getId());
-			stmt.execute();
-			stmt.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-		return true;
-	}
-
-	public Cliente getById(Long id) {
-		Cliente result = null;
-		
-		
-		try {
-			PreparedStatement stmt = this.connection.prepareStatement("select * from clientes where id = ?;");
-			stmt.setLong(1, id);
-			
-			ResultSet rs = stmt.executeQuery();
-
-			while (rs.next()) {
-				// criando o objeto
-				result = new Cliente();
-				result.setId(rs.getLong("id"));
-				result.setNome(rs.getString("nome"));
-				result.setFone(rs.getString("fone"));
-				result.setCpf(rs.getString("cpf"));
-				result.setEmail(rs.getString("email"));
-				result.setEndereco(rs.getString("endereco"));
-
-				// montando a data através do Calendar
-				Calendar data = Calendar.getInstance();
-				data.setTime(rs.getDate("dataNascimento"));
-				result.setDataNascimento(data);
-
+				Mensalidade m = new Mensalidade();
+				m.setCodigo(rs.getLong("codigo"));
+				m.setIdcliente(rs.getLong("idcliente"));
+				m.setValor(rs.getDouble("valor"));
 				
+				
+
+				// montando a data através do Calendar
+				Calendar datapagamento = Calendar.getInstance();
+				Calendar datainicio = Calendar.getInstance();
+				Calendar datafim = Calendar.getInstance();
+				
+				datapagamento.setTime(rs.getDate("datapagamento"));
+				datainicio.setTime(rs.getDate("datainicio"));
+				datafim.setTime(rs.getDate("datafim"));
+				
+				m.setDatapagamento(datapagamento);
+				m.setDatainicio(datainicio);
+				m.setDatafim(datafim);
+				
+				// adicionando o objeto à lista
+				result.add(m);
 			}
 			rs.close();
 			stmt.close();
@@ -149,36 +87,39 @@ public class MensalidadeDAO {
 		}
 
 		return result;
+	}
 
-		
-	}	
-	
-	public List<Cliente> getByNome(String nome){
-		
-		List<Cliente> result =  new ArrayList<>();
-		
+	public List<Mensalidade> getFluxo(Calendar datainicioo, Calendar datafimm) {
+		List<Mensalidade> result = new ArrayList<>();
+
 		try {
-			PreparedStatement stmt = this.connection.prepareStatement("select * from clientes where nome = '"+ nome + "';");
-			
-			
+			PreparedStatement stmt = this.connection.prepareStatement("SELECT * FROM mensalidades WHERE datapagamento BETWEEN ('"+datainicioo+"')  AND  ('"+datafimm+"');");
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
 				// criando o objeto 
-				Cliente cliente = new Cliente();
-				cliente.setId(rs.getLong("id"));
-				cliente.setNome(rs.getString("nome"));
-				cliente.setFone(rs.getString("fone"));
-				cliente.setCpf(rs.getString("cpf"));
-				cliente.setEmail(rs.getString("email"));
-				cliente.setEndereco(rs.getString("endereco"));
+				Mensalidade m = new Mensalidade();
+				m.setCodigo(rs.getLong("codigo"));
+				m.setIdcliente(rs.getLong("idcliente"));
+				m.setValor(rs.getDouble("valor"));
+				
+				
 
 				// montando a data através do Calendar
-				Calendar data = Calendar.getInstance();
-				data.setTime(rs.getDate("dataNascimento"));
-				cliente.setDataNascimento(data);
-
-				result.add(cliente);
+				Calendar datapagamento = Calendar.getInstance();
+				Calendar datainicio = Calendar.getInstance();
+				Calendar datafim = Calendar.getInstance();
+				
+				datapagamento.setTime(rs.getDate("datapagamento"));
+				datainicioo.setTime(rs.getDate("datainicio"));
+				datafim.setTime(rs.getDate("datafim"));
+				
+				m.setDatapagamento(datapagamento);
+				m.setDatainicio(datainicio);
+				m.setDatafim(datafim);
+				
+				// adicionando o objeto à lista
+				result.add(m);
 			}
 			rs.close();
 			stmt.close();
@@ -187,9 +128,8 @@ public class MensalidadeDAO {
 		}
 
 		return result;
-
-		
-		
 	}
+
+	
 
 }

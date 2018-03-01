@@ -6,13 +6,16 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class Mensalidade {
 
-	@DateTimeFormat(pattern="dd/MM/yyyy")
+	
 	
 	public Long codigo;
 	public Long idcliente;
 	private double valor;
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Calendar datapagamento;
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Calendar datainicio;
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Calendar datafim;
 	
 	public Long getCodigo() {

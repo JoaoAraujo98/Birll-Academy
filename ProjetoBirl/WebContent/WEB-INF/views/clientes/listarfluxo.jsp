@@ -37,13 +37,13 @@
 
 <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Lista de clientes</title>
+		<title>Fluxo Mensal</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	</head>
 
 	<body>
-		<center><h1>LISTA DE CLIENTES</h1></center>
+		<center><h1>Fluxo Mensal</h1></center>
 	  <div class="w3-bar w3-light-grey">
     <a href="/ProjetoBirl/" class="w3-bar-item w3-button">Inicio</a>
     <div class="w3-dropdown-hover">
@@ -65,34 +65,35 @@
 	
 		<table border =3; align="center">
 			<tr>
-				<th>ID</th>
-				<th>Nome</th>
-				<th>Cpf</th>
-				<th>Telefone</th>
-				<th>Email</th>
-				<th>Endereço</th>
-				<th>Data de Nascimento</th>
-				<th>1ª Opção</th>
-				<th>2ª Opção</th>
-				<th>3ª Opção</th>
-				<th>4ª Opção</th>
+				<th>Codigo</th>
+				<th>ID do Cliente</th>
+				<th>Valor</th>
+				<th>Data de Pagamento</th>
+				<th>Inicio da Mensalidade</th>
+				<th>Fim da Mensalidade</th>
+				
 			</tr>
 	
-			<c:forEach var="cliente" items="${clientes}">
+			<c:forEach var="mensalidade" items="${mensalidades}">
 				
 				<tr>
-					<td>${cliente.id}</td>
-					<td>${cliente.nome}</td>
-					<td>${cliente.cpf}</td>
-					<td>${cliente.fone}</td>
-					<td>${cliente.email}</td>
-					<td>${cliente.endereco}</td>
-					<td><fmt:formatDate value="${cliente.dataNascimento.time}"
+					<td>${mensalidade.codigo}</td>
+					<td>${mensalidade.idcliente}</td>
+					<td>${mensalidade.valor}</td>
+					
+					
+					<td><fmt:formatDate value="${mensalidade.datapagamento.time}"
 						pattern="dd/MM/yyyy" /></td>
-					<td><a href="/ProjetoBirl/clientes/remover?id=${cliente.id}">Remover</a></td>
-					<td><a href="/ProjetoBirl/clientes/selecionar?id=${cliente.id}">Alterar</a></td>
-					<td><a href="/ProjetoBirl/clientes/pagarmensalidade?id=${cliente.id}">Pagar Mensalidade</a></td>
-					<td><a href="/ProjetoBirl/clientes/vermensalidades?id=${cliente.id}">Ver Mensalidades</a></td>
+					
+					
+					<td><fmt:formatDate value="${mensalidade.datainicio.time}"
+						pattern="dd/MM/yyyy" /></td>
+					
+					<td><fmt:formatDate value="${mensalidade.datafim.time}"
+						pattern="dd/MM/yyyy" /></td>
+					
+					
+					
 				</tr>
 			</c:forEach>
 		
