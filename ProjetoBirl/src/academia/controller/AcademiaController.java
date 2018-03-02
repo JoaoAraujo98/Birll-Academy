@@ -1,5 +1,6 @@
 package academia.controller;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import academia.config.Cliente;
+import academia.config.Fluxo;
 import academia.config.Mensalidade;
 import academia.daos.ClienteDAO;
 import academia.daos.MensalidadeDAO;
@@ -21,6 +23,14 @@ public class AcademiaController {
 
 		System.out.println("Acesando o formulário dos clientes");
 		return "clientes/form";
+
+	}
+	
+	@RequestMapping("clientes/formfluxo")
+	public String formfluxo() {
+
+		System.out.println("fluxo de caixa");
+		return "clientes/formfluxo";
 
 	}
 
@@ -55,12 +65,12 @@ public class AcademiaController {
 	}
 	
 	@RequestMapping(value= "clientes/remover")
-	public ModelAndView remover(Cliente c){
+	public String remover(Cliente c){
 		System.out.println("removendo cliente");
 		ClienteDAO dao = new ClienteDAO();
 		dao.remover(c);
 		
-		return listar();
+		return "redirect:/clientes";
 		
 	}
 	
@@ -100,12 +110,12 @@ public class AcademiaController {
 	}
 	
 	@RequestMapping(value="clientes/alterar")
-	public ModelAndView alterar (Cliente c){
+	public String alterar (Cliente c){
 		System.out.println("alterando cliente");
 		ClienteDAO dao = new ClienteDAO();
 		dao.alterar(c);
 		
-		return listar();
+		return "redirect:/clientes";
 		
 	
 	}
@@ -113,12 +123,13 @@ public class AcademiaController {
 	@RequestMapping(value="clientes/vermensalidades")
 	public ModelAndView vermensalidades (Cliente c){
 		
-		ClienteDAO dao = new ClienteDAO();
-		c = dao.getById(c.id);
 		
+		
+		MensalidadeDAO dao2 = new MensalidadeDAO();
+		List<Mensalidade> mensalidades = dao2.getLista(c.id);
 		
 		ModelAndView modelAndView = new ModelAndView("clientes/mensalidades");
-		modelAndView.addObject("clientes", c);
+		modelAndView.addObject("mensalidades", mensalidades);
 		
 		return modelAndView;
 	
@@ -157,20 +168,41 @@ public class AcademiaController {
 
 	}
 	
-	@RequestMapping(value="teste", method = RequestMethod.POST)
-	public String teste(Mensalidade m, String nome){
+	@RequestMapping(value="pagarm", method = RequestMethod.POST)
+	public String pagarM(Mensalidade m, String nome){
 		
 		System.out.println("acessando o método de gravar uma mensalidade");
 
-		//System.out.println("Valor:" +m.getValor()+"Codigo:" + m.getCodigo()+"Idcliente:" + m.getIdcliente()+"DataFim:" + m.getDatafim()+"Data inicio:" + m.getDatainicio()+"Data pagamento:" + m.getDatapagamento());
+		System.out.println("Valor:" +m.getValor()+"Codigo:" + m.getCodigo()+"Idcliente:" + m.getIdcliente()+"DataFim:" + m.getDatafim()+"Data inicio:" + m.getDatainicio()+"Data pagamento:" + m.getDatapagamento());
 		
 		System.out.println(m.getValor());
 
 		MensalidadeDAO dao = new MensalidadeDAO();
-		//dao.inserir(m);
+		dao.inserir(m);
 		
 		
 		return "redirect:clientes";
+	}
+	
+	@RequestMapping(value="solicitarfluxo", method = RequestMethod.POST)
+	public ModelAndView solicitarFluxo(String datainicio, String datafim){
+		
+		System.out.println("acessando o método de solicitar fluxo");
+
+		
+		
+		
+		MensalidadeDAO dao = new MensalidadeDAO();
+				
+
+		
+		
+		List<Mensalidade> mensalidades = dao.getFluxo(datainicio, datafim);
+		
+		ModelAndView modelAndView = new ModelAndView("clientes/mensalidades");
+		modelAndView.addObject("mensalidades", mensalidades);
+		
+		return modelAndView;
 	}
 	
 	

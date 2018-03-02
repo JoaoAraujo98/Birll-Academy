@@ -3,14 +3,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <style>
 	body{
-background-image:url("http://blog.visme.co/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-037.jpg");
-}	
+	background-image:url("http://blog.visme.co/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-037.jpg");
 	
 	
 	}
 </style>
 <head>
-    <title>--Formulário Cliente--</title>
+    <title>--Formulário Fluxo--</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <!--   <link href="ContatoEstilo.css" rel="stylesheet" media="all" />
@@ -30,47 +29,29 @@ background-image:url("http://blog.visme.co/wp-content/uploads/2017/07/50-Beautif
         <a href="/ProjetoBirl/clientes/form" class="w3-bar-item w3-button">Adicionar Cliente</a>
         <a href="/ProjetoBirl/clientes" class="w3-bar-item w3-button">Listar Cliente</a>
         <a href="/ProjetoBirl/clientes/selecionarnome" class="w3-bar-item w3-button">Buscar Cliente por Nome</a>
+         <a href="/ProjetoBirl/clientes/formfluxo" class="w3-bar-item w3-button">Fluxo Mensal</a>
         
       </div>
     </div>
   </div>
 </div>
-   <center> <form action="/ProjetoBirl/clientes" method="post">
+   <center> <form action="/ProjetoBirl/solicitarfluxo" method="post">
 
-        <h2>Cadastre-se</h2>
+        <h2>Fluxo de Caixa</h2>
 
-        <p class="nome">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nomeid" placeholder="seu nome" required="required" name="nome" />
-            
-        </p>
-        <p>
-        	<label for="cpf">CPF:</label>
-            <input type="text" id="cpfid" placeholder="xxx.xxx.xxx-xx" name="cpf" />
-            
-        </p>
-        <p class="fone">
-       	 	<label for="fone">Fone:</label>
-            <input type="text" id="foneid" placeholder="(xx)xxxx-xxxx" name="fone" />
-            
-
-        </p>
-        
+       
+       
          <p>
-        	<label for="endereco">Endereço:</label>
-            <input type="text" id="enderecoid" placeholder="nome da rua, número" name="endereco" />
+        	<label for="datainicio">Inicio da mensalidade (yyyy/MM/dd) </label>
+            <input type="text" id="datainicio"  name="datainicio" />
             
         </p>
          <p>
-        	<label for="email">Email:</label>
-            <input type="text" id="emailid" placeholder="email@mail.com" name="email" />
+        	<label for="datafim">Fim da mensalidade (yyyy/MM/dd)</label>
+            <input type="text" id="datafim"  name="datafim" />
             
         </p>
-            <p>
-        	<label for="dataNascimento">Data de nascimento:</label>
-            <input type="text" id="dataNascimentoid" placeholder="dd/MM/yyyy" name="dataNascimento" />
             
-        </p> 
         <p class="submit">
             <input type="submit" onclick="Enviar();" value="Enviar" />
         </p>
